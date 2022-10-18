@@ -12,10 +12,14 @@
             .logo-wrapper{
                 width: 30%;
             }
+            .email{
+                display: none;
+            }
             .search{
                 display: none;
             }
             .phones{
+                display: none;
                 min-width: auto;
                 .icon-wrapper{
                     display: none;
@@ -27,6 +31,29 @@
                     }
                 }
             }
+
+            .phones-mobile{
+                display: block;
+                
+                a{
+                    display: block;
+                    margin: 8px 0;
+                    text-decoration: none;
+                    color: #000;
+                    font-size: 14px;
+                    font-weight: 600;
+                    position: relative;
+
+                    span{
+                        position: absolute;
+                        top:16px;
+                        right:0px;
+                        font-size: 11px;
+                        font-weight: 400;
+                    }
+                }
+            }
+
             .basket{
                 .icon-wrapper{
                     margin-right: 0;
@@ -38,20 +65,131 @@
 
         }
 
-        .menu-wrapper, .catalog-left-menu, .slider-wrapper{
+        .slider-wrapper{
             display: none;
+        } 
+
+        .menu-wrapper{
+            .mobile-toogle-nav{ 
+                height: 47px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 20px;
+                
+
+                .mobile-toogle-nav-title{
+                    color: #ffffff;
+                    text-transform: uppercase;
+                    font-size: 13px;
+                    font-weight: 600;
+                }
+        
+                .mobile-toogle-nav-btn{
+                    display: flex;
+                    cursor: pointer;
+                    width: 28px;
+                    height: 28px;
+                    padding: 4px 0;
+                    box-sizing: border-box;
+                    justify-content: space-between;
+                    flex-direction: column;
+                    position: relative;
+        
+                    span {
+                        height:2px;
+                        width:100%;
+                        background-color:#ffffff;
+                        transition:0.2s;
+                        display: block;
+                    }
+                }
+
+
+            }
+            nav{
+                display: none;
+
+                &.active{
+                    display: block;
+                }
+                flex-direction: column;
+                .catalog-toggle{
+                    width: 100%;
+                    a{
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+            }
         }
 
         .main-wrapper {
             main{
                 padding-right: 10px;
                 padding-left:10px;
+
+                .mainpage-banners{
+
+                    a{
+                        width: 100%;
+                        min-height: 160px;
+                        margin-bottom: 20px;
+                    }
+                }
+                .main-text-wrapper{
+                    display: block;
+
+                    .catalog-element-item{
+                        .catalog-element-info{
+                            display: block;
+
+                            .slider-image-wrapper{
+                                width: 100%;
+                                img{
+                                    width: 100%;
+                                }
+                            }
+
+                            .catalog-element-description{
+                                width: 100%;
+                                .catalog-buy-buttons{
+                                    justify-content: flex-start;
+                                    .buy-count-buttons{
+                                        margin-right: 10px;
+                                    }
+                                    .btn-whatsapp{
+                                        display: none;
+                                    }
+                                }
+
+                                .catalog-alter-variants{
+
+                                }
+                            }
+                        }
+                    }
+                }
                 .features-wrapper{
                     display: none;
+                }
+
+                .catalog-list{
+                    .catalog-items{
+                        &.square{
+                            grid-template-columns: repeat(2, 1fr);
+                        }
+                    }
                 }
             }
             aside{
                 margin-bottom: 0;
+                .news-preview{
+                    display: none;
+                }
+                .catalog-left-menu{
+                    display: none;
+                }
             }
         }
 
