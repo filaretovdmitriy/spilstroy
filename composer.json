@@ -1,0 +1,56 @@
+{
+    "name": "aisol/impressio-cms3",
+    "description": "Impression cms by aisol",
+    "keywords": ["aisol", "cms"],
+    "homepage": "http://www.aisol.ru",
+    "type": "project",
+    "license": "FSF",
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.0",
+        "yiisoft/yii2": "~2.0.13",
+        "yiisoft/yii2-bootstrap": "*",
+        "yiisoft/yii2-swiftmailer": "~2.0.0",
+        "yiisoft/yii2-jui": "^2.0",
+        "yiisoft/yii2-imagine": "~2.1.0",
+        "rmrevin/yii2-minify-view": "^1.15",
+        "bower-asset/fancybox": "~3.1.20",
+        "yiisoft/yii2-debug": "*"
+    },
+    "require-dev": {
+        "joshtronic/php-loremipsum": "dev-master"
+    },
+    "config": {
+        "process-timeout": 1800
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "yii\\composer\\Installer::postCreateProject"
+        ]
+    },
+    "extra": {
+        "yii\\composer\\Installer::postCreateProject": {
+            "setPermission": [
+                {
+                    "runtime": "0777",
+                    "web/assets": "0777",
+                    "web/icms/assets": "0777",
+                    "yii": "0755"
+                }
+            ],
+            "generateCookieValidationKey": [
+                "config/web.php"
+            ]
+        },
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    },
+    "repositories": [
+        {
+          "type": "composer",
+          "url": "https://asset-packagist.org"
+        }
+    ]
+}

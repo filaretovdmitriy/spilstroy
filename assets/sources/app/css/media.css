@@ -1,0 +1,64 @@
+@media (max-width: 1000px) {
+  .site-wrapper {
+    width: 100%;
+  }
+  .site-wrapper .page-wrapper {
+    width: 100%;
+  }
+  .site-wrapper .main-wrapper {
+    width: 100%;
+    display: block;
+  }
+  .site-wrapper header .logo-wrapper {
+    width: 30%;
+  }
+  .site-wrapper header .search {
+    display: none;
+  }
+  .site-wrapper header .phones {
+    min-width: auto;
+  }
+  .site-wrapper header .phones .icon-wrapper {
+    display: none;
+  }
+  .site-wrapper header .phones .phones-list a {
+    font-size: 12px;
+    padding: 3px;
+  }
+  .site-wrapper header .basket .icon-wrapper {
+    margin-right: 0;
+  }
+  .site-wrapper header .basket .baket-caption, .site-wrapper header .basket .baket-empty-caption {
+    display: none;
+  }
+  .site-wrapper .menu-wrapper, .site-wrapper .catalog-left-menu, .site-wrapper .slider-wrapper {
+    display: none;
+  }
+  .site-wrapper .main-wrapper main {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .site-wrapper .main-wrapper main .features-wrapper {
+    display: none;
+  }
+  .site-wrapper .main-wrapper aside {
+    margin-bottom: 0;
+  }
+  .site-wrapper footer {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .site-wrapper footer .footer-menu {
+    display: none;
+  }
+  .site-wrapper footer .logo-wrapper {
+    width: 30%;
+  }
+  .site-wrapper footer .phones {
+    width: 70%;
+    justify-content: flex-end;
+  }
+  .site-wrapper footer .phones img {
+    display: none;
+  }
+}/*# sourceMappingURL=media.css.map */

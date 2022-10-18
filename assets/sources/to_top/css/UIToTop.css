@@ -1,0 +1,22 @@
+#toTop {
+    display: none;
+    text-decoration: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    overflow: hidden;
+    width: 37px;
+    height: 47px;
+    border: medium none;
+    text-align: center;
+    opacity: 0.8;
+    background: #33BDCA none repeat scroll 0% 0%;
+    color: #FFF;
+    font-size: 20px;
+    border-radius: 4px;
+    padding-top: 9px;
+    font-weight: normal;
+}
+.toTopText {
+    font-size: 9px;
+}

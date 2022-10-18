@@ -1,0 +1,38 @@
+.call-back-button {
+    width: 60px;
+    background: url('../images/phone.png') #59C9D3 center 8px no-repeat;
+    position: fixed;
+    right: 0px;
+    top: 50px;
+    z-index: 1000;
+    cursor: pointer;
+    border-radius: 10px 0px 0px 10px;
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(50, 50, 50, 0.5);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(50, 50, 50, 0.5);
+    box-shadow: 0px 0px 15px 0px rgba(50, 50, 50, 0.5);
+    text-align: center;
+    font-size: 9px;
+    color: #fff;
+    padding-top: 49px;
+}
+
+.popup-form {
+    padding-top: 20px;
+}
+
+.popup-form .form-group input[type="text"] {
+    height: 50px;
+    font-size: 16px;
+}
+
+.call-back-button-send {
+    width: 100%;
+    border: none;
+    background-color: #59C9D3;
+    height: 40px;
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+}

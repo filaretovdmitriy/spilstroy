@@ -1,0 +1,22 @@
+.popup-design {
+    padding: 30px;
+    background: #fff;
+    width: 400px;
+    max-width: 90%;
+    margin:0 auto;
+}
+
+.popup-design a {
+    display: block;
+    text-align: center;
+    padding: 5px 0;
+}
+.popup {
+    max-width: 100%;
+}
+.popup-form {
+    padding-top: 20px;
+}
+.popup-form .form-group {
+    margin-bottom: 10px;
+}

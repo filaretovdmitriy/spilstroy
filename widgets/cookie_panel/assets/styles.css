@@ -1,0 +1,26 @@
+.cookie-panel-block {
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: #fff;
+    display: flex;
+    padding: 10px;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    font-size: 11px;
+}
+
+.cookie-panel-close-button {
+    margin-left:12px;
+    text-decoration:underline;
+    cursor: pointer;
+}
+
+.cookie-panel-close-button:hover {
+    text-decoration:none;
+}
