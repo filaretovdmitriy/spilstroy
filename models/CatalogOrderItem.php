@@ -108,9 +108,9 @@ class CatalogOrderItem extends \app\components\db\ActiveRecord
      * @param boolean $isSku - SKU или нет
      * @return CatalogOrderItems товар в заказе или null, если такой товар не найден
      */
-    static public function getItemByOrder($id, $orderId, $isSku = false)
+    static public function getItemByOrder($id, $orderId, $isSku = false, $type)
     {
-        $findItem = self::find()->andWhere(['catalog_order_id' => $orderId]);
+        $findItem = self::find()->andWhere(['catalog_order_id' => $orderId, 'type' => $type]);
         if ($isSku) {
             $findItem->andWhere(['catalog_sku_id' => $id]);
         } else {
@@ -194,6 +194,7 @@ class CatalogOrderItem extends \app\components\db\ActiveRecord
         ]));
         $good->offsetSet('price', $this->price);
         $good->offsetSet('quant', $this->quant);
+        $good->offsetSet('type', $this->type);
         $good->offsetSet('summ', $this->price * $this->quant);
         $good->offsetSet('image', $catalog->getPath('image'));
 

@@ -54,6 +54,7 @@ class BasketController extends \app\components\controller\Frontend
         }
         $elemSkuId = \Yii::$app->request->post('elemSkuId', false);
         $elemQuant = \Yii::$app->request->post('elemQuant', 1);
+        $typePrice = \Yii::$app->request->post('typePrice', false);
 
         $order = CatalogOrder::getUserOrder();
 
@@ -62,9 +63,9 @@ class BasketController extends \app\components\controller\Frontend
         }
 
         if ($elemSkuId === false) {
-            $orderItem = $order->add($elemId, false, $elemQuant);
+            $orderItem = $order->add($elemId, false, $elemQuant, $typePrice);
         } else {
-            $orderItem = $order->add($elemSkuId, true, $elemQuant);
+            $orderItem = $order->add($elemSkuId, true, $elemQuant, $typePrice);
         }
 
         return json_encode([
@@ -85,6 +86,7 @@ class BasketController extends \app\components\controller\Frontend
     {
         $orderGoodId = \Yii::$app->request->post('orderGoodId');
         $newCount = \Yii::$app->request->post('newCount');
+        $type = \Yii::$app->request->post('type');
 
         $order = CatalogOrder::getUserOrder();
 
@@ -96,7 +98,7 @@ class BasketController extends \app\components\controller\Frontend
             throw new \yii\web\HttpException(403, 'You can\'t edit this order');
         }
 
-        $order->edit($orderGoodId, $newCount);
+        $order->edit($orderGoodId, $newCount, $type);
         $orderItem = CatalogOrderItem::findOne($orderGoodId);
 
         return json_encode([

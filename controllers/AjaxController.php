@@ -77,11 +77,16 @@ class AjaxController extends \app\components\controller\Ajax
     {
         $form = new \app\widgets\back_call_popup\BackCallForm();
         $result = ['success' => false];
+        $good = '';
         if ($form->load(\Yii::$app->request->post()) && $form->validate()) {
             $result['success'] = true;
+            if(!empty($form->good)) {
+                $good = "<p><b>Товар: </b>{$form->good}</p>";
+            }
             $message = <<<HTML
 <p><b>Имя: </b>{$form->name}</p>
 <p><b>Телефон: </b>{$form->phone}</p>
+{$good}
 HTML;
             if (!Mailer::send(null, 'Запрос обратного звонка', $message)) {
                 $result['success'] = false;

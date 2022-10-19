@@ -227,13 +227,14 @@ class CatalogOrder extends \app\components\db\ActiveRecord
      * @param integer $id - идентификатор товара или sku
      * @param boolean $isSku - SKU или нет
      * @param integer $quant - количество
+     * @param integer $typePrice - тип цены
      */
-    public function add($id, $isSku = false, $quant = 1)
+    public function add($id, $isSku = false, $quant = 1, $typePrice)
     {
         if ($isSku) {
-            $orderItem = $this->addSkuItem($id, $quant, $this->id);
+            $orderItem = $this->addSkuItem($id, $quant, $typePrice);
         } else {
-            $orderItem = $this->addCatalogItem($id, $quant, $this->id);
+            $orderItem = $this->addCatalogItem($id, $quant, $typePrice);
         }
         return $orderItem;
     }
@@ -245,14 +246,14 @@ class CatalogOrder extends \app\components\db\ActiveRecord
      * @return /app/models/CatalogOrderItem добавленный товар
      * @throws \yii\web\HttpException
      */
-    public function addCatalogItem($id, $quant)
+    public function addCatalogItem($id, $quant, $typePrice)
     {
         $catalog = Catalog::findOne($id);
         if (is_null($catalog)) {
             throw new \yii\web\HttpException(500, 'Good ID:' . $id . ' not found');
         }
 
-        $orderItem = CatalogOrderItem::getItemByOrder($id, $this->id);
+        $orderItem = CatalogOrderItem::getItemByOrder($id, $this->id, false, $typePrice);
         if (is_null($orderItem)) {
             $orderItem = new CatalogOrderItem();
             $orderItem->catalog_order_id = $this->id;
@@ -261,8 +262,9 @@ class CatalogOrder extends \app\components\db\ActiveRecord
         $oldPrice = $orderItem->price;
         $oldQuant = $orderItem->quant;
 
-        $orderItem->price = $catalog->price;
+        $orderItem->price = $typePrice === 'moscow' ? $catalog->moscowprice : $catalog->price;
         $orderItem->quant += $quant;
+        $orderItem->type = $typePrice;
         $orderItem->save();
 
         $this->updateItemCounters($orderItem->price, $oldPrice, $orderItem->quant, $oldQuant);
@@ -277,14 +279,14 @@ class CatalogOrder extends \app\components\db\ActiveRecord
      * @return /app/models/CatalogOrderItem добавленный товар
      * @throws \yii\web\HttpException
      */
-    public function addSkuItem($id, $quant)
+    public function addSkuItem($id, $quant, $typePrice)
     {
         $catalogSku = CatalogSku::findOne($id);
         if (is_null($catalogSku)) {
             throw new \yii\web\HttpException(500, 'Good SKU ID:' . $id . ' not found');
         }
 
-        $orderItem = CatalogOrderItem::getItemByOrder($id, $this->id, true);
+        $orderItem = CatalogOrderItem::getItemByOrder($id, $this->id, true, $typePrice);
         if (is_null($orderItem)) {
             $orderItem = new CatalogOrderItem();
             $orderItem->catalog_order_id = $this->id;
@@ -297,9 +299,10 @@ class CatalogOrder extends \app\components\db\ActiveRecord
         if ($catalogSku->price != 0) {
             $orderItem->price = $catalogSku->price;
         } else {
-            $orderItem->price = $catalogSku->catalog->price;
+            $orderItem->price = $typePrice === 'moscow' ?  $catalogSku->catalog->moscowprice : $catalogSku->catalog->price;
         }
         $orderItem->quant += $quant;
+        $orderItem->type = $typePrice;
         $orderItem->save();
 
         $this->updateItemCounters($orderItem->price, $oldPrice, $orderItem->quant, $oldQuant);
@@ -324,13 +327,13 @@ class CatalogOrder extends \app\components\db\ActiveRecord
         $oldQuant = $orderItem->quant;
         if (!$orderItem->catalog_sku_id) {
             $catalog = $orderItem->catalog;
-            $orderItem->price = $catalog->price;
+            $orderItem->price = $orderItem->type === 'moscow' ?  $catalog->moscowprice : $catalog->price;
         } else {
             $catalogSku = $orderItem->catalogSku;
             if ($catalogSku->price != 0) {
-                $orderItem->price = $catalogSku->price;
+                $orderItem->price = $orderItem->type === 'moscow' ?  $catalogSku->catalog->moscowprice : $catalogSku->catalog->price;
             } else {
-                $orderItem->price = $catalogSku->catalog->price;
+                $orderItem->price = $orderItem->type === 'moscow' ?  $catalogSku->catalog->moscowprice : $catalogSku->catalog->price;
             }
         }
         $orderItem->quant = $quant;

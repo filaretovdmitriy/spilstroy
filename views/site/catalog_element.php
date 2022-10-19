@@ -3,6 +3,7 @@
 
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\widgets\back_call_popup\BackCallPopup;
 ?>
 
 <div class="catalog-element-item">
@@ -28,7 +29,7 @@ use app\assets\AppAsset;
 
             <div class="price-variant">
                 Отгрузка с пилорамы (80 км от МКАД, от 30 куб. м) - <?= number_format($catalog->price, 2, '.', ' '); ?> руб/куб<br>
-                Отгрузка от Московского склада - <?= number_format($catalog->price_old, 2, '.', ' '); ?> руб/куб
+                Отгрузка от Московского склада - <?= number_format($catalog->moscowprice, 2, '.', ' '); ?> руб/куб
             </div>
 
             <div class="catalog-element-price">
@@ -40,8 +41,8 @@ use app\assets\AppAsset;
             <div class="catalog-keep-tab">
                 <div class="catalog-keep-title">Склад</div>
                 <div class="catalog-keep-tab-select">
-                    <div class="catalog-keep-tab-item active" data-price="<?= number_format($catalog->price, 2, '.', ' '); ?>">Производство</div>
-                    <div class="catalog-keep-tab-item" data-price="<?= number_format($catalog->price_old, 2, '.', ' '); ?>">Москва</div>
+                    <div class="catalog-keep-tab-item active" data-type="warehouse" data-price="<?= number_format($catalog->price, 2, '.', ' '); ?>">Производство</div>
+                    <div class="catalog-keep-tab-item" data-type="moscow" data-price="<?= number_format($catalog->moscowprice, 2, '.', ' '); ?>">Москва</div>
                 </div>
                 
             </div>
@@ -55,7 +56,9 @@ use app\assets\AppAsset;
                 </div>
                 <div class="btn but-button basket-add-item"  data-id="<?= $catalog->id ?>"><span>В корзину</span></div>
                 <a class="btn-whatsapp" href="https://wa.me/message/PKWQXBSOLBUZH1"><img src="<?= AppAsset::path('images/whatsapp-icon.svg') ?>"><span>Связаться с нами</span></a>
-
+            </div>
+            <div class="catalog-callback-button catalog-buy-buttons">
+                <?= BackCallPopup::widget(['good' => $catalog]) ?>
             </div>
 
 

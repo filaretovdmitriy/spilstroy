@@ -62,7 +62,7 @@ function checkSkuProps(showGrowl) {
     return flag;
 }
 
-function updateOrdercount(id, count)
+function updateOrdercount(id, count, type)
     {
         if (isNaN(count) || count < 1) {
             count = 1;
@@ -70,7 +70,8 @@ function updateOrdercount(id, count)
 
         $.post('/basket/edit_good_count', {
             orderGoodId: id,
-            newCount: count
+            newCount: count,
+            typePrice: type
         }, function (data) {
             if (data.success) {
                 $('#product-price-' + id).html(number_format(data.good_price, 2, '.', ' '));
@@ -95,7 +96,8 @@ $(function($) {
         
         id = $(this).prev().data('id');
         count = parseInt($(this).prev().val());
-        updateOrdercount(id, count);
+        type = $(this).data('type');
+        updateOrdercount(id, count, type);
         
     });
 
@@ -106,7 +108,8 @@ $(function($) {
         $(this).next().val(val);
         id = $(this).next().data('id');
         count = parseInt($(this).next().val());
-        updateOrdercount(id, count);
+        type = $(this).data('type');
+        updateOrdercount(id, count, type);
     });
 
     $(".button-plus-item").click(function( event ) {
@@ -129,10 +132,10 @@ $(function($) {
     /**
     * Удаление товара из заказа
     */
-   $('#basket-table').on('click', '.basket-delete-good', function() {
+   $(document).on('click', '.basket-delete-good', function() {
        id = $(this).data('id');
 
-       $.post('/ajax/basket/delete_good', {orderGoodId: id}, function(data) {
+       $.post('/basket/delete_good', {orderGoodId: id}, function(data) {
            if (data.success) {
                $('#order-good-' + id).remove();
                $('#basket-total-price').html(number_format(data.total_price, 2, '.', ' '));
@@ -146,6 +149,11 @@ $(function($) {
                    });
                }
                $.growl({title: 'Корзина', message: 'Товар удален'});
+               items = $('.basket-catalog-item').length;
+
+               if(items == 0) {
+                   location.reload();
+               }
                data.delete_good = id;
            }
        }, 'json');
@@ -184,6 +192,11 @@ $(function($) {
         var btn = $(this);
         var elemId = $(this).data('id');
         var elemSkuId = undefined;
+        var typePrice = $('.catalog-keep-tab-item.active');
+
+        if(typePrice.data('price') == 0) {
+            return $.growl.error({title: 'Корзина', message: 'У данного товара не указана цена'});
+        }
         
         if ($('#product-sku-id-' + elemId).length > 0) {
             if ($('#product-sku-id-' + elemId).val() !== '') {
@@ -204,7 +217,8 @@ $(function($) {
         $.post('/basket/add_to_cart', {
             'elemId': elemId,
             'elemSkuId': elemSkuId,
-            'elemQuant': elemQuant
+            'elemQuant': elemQuant,
+            'typePrice': typePrice.data('type'),
         }, function (data) {
             if (data.success) {
                 $('.mini-basket-count').html(data.total_count);
@@ -224,7 +238,8 @@ $(function($) {
     $(document).on('change', '.update-order-count', function () {
         id = $(this).data('id');
         count = parseInt($(this).val());
-        updateOrdercount(id, count);
+        type = $(this).data('type');
+        updateOrdercount(id, count, type);
     });
     
     /**
