@@ -57,7 +57,8 @@ use app\widgets\back_call_popup\BackCallPopup;
                 <div class="btn but-button basket-add-item"  data-id="<?= $catalog->id ?>"><span>В корзину</span></div>
                 <a class="btn-whatsapp" href="https://wa.me/message/PKWQXBSOLBUZH1"><img src="<?= AppAsset::path('images/whatsapp-icon.svg') ?>"><span>Связаться с нами</span></a>
             </div>
-            <div class="catalog-callback-button catalog-buy-buttons">
+            <div class="catalog-callback-buttons">
+                <a class="btn-whatsapp" href="https://wa.me/message/PKWQXBSOLBUZH1"><img src="<?= AppAsset::path('images/whatsapp-icon.svg') ?>"><span>Связаться с нами</span></a>
                 <?= BackCallPopup::widget(['good' => $catalog]) ?>
             </div>
 

@@ -163,13 +163,89 @@
                                     }
                                 }
 
+                                .catalog-callback-buttons{
+                                    display: flex; 
+                                    justify-content: flex-start;
+                                    align-items: center;
+                                    margin:20px 0;
+                                    gap:10px;
+
+                                    .btn-whatsapp{
+                                        color: #000;
+                                        display: flex;
+                                        border:1px solid #009047;
+                                        justify-content: center;
+                                        align-items: center;
+                                        border-radius: 4px;
+                                        padding: 0 10px;
+                                        text-decoration: none;
+                                        img{
+                                            width: 35px;
+                                        }
+                                    }
+
+                                    #call-back-button{
+                                        display: flex;
+                                        background: #009047;
+                                        color: #ffffff;
+                                         justify-content: center;
+                                        border-radius: 4px;
+                                        height: 37px;
+                                    }
+                                }
+
                                 .catalog-alter-variants{
 
                                 }
                             }
                         }
                     }
+
+                    .basket-wraper{
+                        .basket-items-wrapper{
+                            .basket-catalog-item{
+                                .backet-image{
+                                    width: 20%;
+                                }
+
+                                .backet-item-name{
+                                    width: 35%;
+                                }
+
+                                .basket-item-price{
+                                    display: none;
+                                }
+                            }
+                        }
+
+                        .basket-order-wrapper{
+                            display: block;
+                            .basket-form-wrapper{
+                                width: 100%;
+                                .basket-form-payment-delivery{
+                                    display: block;
+                                    .basket-form-payment-wrapper{
+                                        width: 100%;
+                                    }
+                                    .basket-form-delivery-wrapper{
+                                        width: 100%;
+                                    }
+                                }
+
+                                .basket-form-user-wrapper{
+                                    margin-bottom: 10px;
+                                }
+
+                                
+                            }
+                        }
+
+                        .basket-total{
+                            width: 100%;
+                        }
+                    }
                 }
+
                 .features-wrapper{
                     display: none;
                 }

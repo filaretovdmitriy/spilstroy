@@ -28,7 +28,8 @@
 .call-back-button-send {
     width: 100%;
     border: none;
-    background-color: #59C9D3;
+    background-color: #009047;
+    border-radius: 4px;
     height: 40px;
     color: white;
     font-size: 14px;

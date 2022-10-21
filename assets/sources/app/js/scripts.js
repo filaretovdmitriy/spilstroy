@@ -15,6 +15,11 @@ $( ".catalog-keep-tab-item" ).click(function() {
 });
 
 
+$( ".mobile-toogle-nav-btn" ).click(function() {
+    $('.site-wrapper .menu-wrapper nav').toggleClass('active');
+   
+});
+
 /*
 var html5Slider = document.getElementById('input-range');
 var inputNumbermin = document.getElementById('input-number-min');

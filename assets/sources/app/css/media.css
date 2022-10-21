@@ -159,6 +159,80 @@
   .site-wrapper .main-wrapper main .main-text-wrapper .catalog-element-item .catalog-element-info .catalog-element-description .catalog-buy-buttons .btn-whatsapp {
     display: none;
   }
+  .site-wrapper .main-wrapper main .main-text-wrapper .catalog-element-item .catalog-element-info .catalog-element-description .catalog-callback-buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin: 20px 0;
+    gap: 10px;
+  }
+  .site-wrapper .main-wrapper main .main-text-wrapper .catalog-element-item .catalog-element-info .catalog-element-description .catalog-callback-buttons .btn-whatsapp {
+    color: #000;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    border: 1px solid #009047;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border-radius: 4px;
+    padding: 0 10px;
+    text-decoration: none;
+  }
+  .site-wrapper .main-wrapper main .main-text-wrapper .catalog-element-item .catalog-element-info .catalog-element-description .catalog-callback-buttons .btn-whatsapp img {
+    width: 35px;
+  }
+  .site-wrapper .main-wrapper main .main-text-wrapper .catalog-element-item .catalog-element-info .catalog-element-description .catalog-callback-buttons #call-back-button {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background: #009047;
+    color: #ffffff;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    border-radius: 4px;
+    height: 37px;
+  }
+  .site-wrapper .main-wrapper main .main-text-wrapper .basket-wraper .basket-items-wrapper .basket-catalog-item .backet-image {
+    width: 20%;
+  }
+  .site-wrapper .main-wrapper main .main-text-wrapper .basket-wraper .basket-items-wrapper .basket-catalog-item .backet-item-name {
+    width: 35%;
+  }
+  .site-wrapper .main-wrapper main .main-text-wrapper .basket-wraper .basket-items-wrapper .basket-catalog-item .basket-item-price {
+    display: none;
+  }
+  .site-wrapper .main-wrapper main .main-text-wrapper .basket-wraper .basket-order-wrapper {
+    display: block;
+  }
+  .site-wrapper .main-wrapper main .main-text-wrapper .basket-wraper .basket-order-wrapper .basket-form-wrapper {
+    width: 100%;
+  }
+  .site-wrapper .main-wrapper main .main-text-wrapper .basket-wraper .basket-order-wrapper .basket-form-wrapper .basket-form-payment-delivery {
+    display: block;
+  }
+  .site-wrapper .main-wrapper main .main-text-wrapper .basket-wraper .basket-order-wrapper .basket-form-wrapper .basket-form-payment-delivery .basket-form-payment-wrapper {
+    width: 100%;
+  }
+  .site-wrapper .main-wrapper main .main-text-wrapper .basket-wraper .basket-order-wrapper .basket-form-wrapper .basket-form-payment-delivery .basket-form-delivery-wrapper {
+    width: 100%;
+  }
+  .site-wrapper .main-wrapper main .main-text-wrapper .basket-wraper .basket-order-wrapper .basket-form-wrapper .basket-form-user-wrapper {
+    margin-bottom: 10px;
+  }
+  .site-wrapper .main-wrapper main .main-text-wrapper .basket-wraper .basket-total {
+    width: 100%;
+  }
   .site-wrapper .main-wrapper main .features-wrapper {
     display: none;
   }
